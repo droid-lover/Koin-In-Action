@@ -1,19 +1,24 @@
 package com.assignment.koin1.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.assignment.koin1.R
 import com.assignment.koin1.model.GithubUser
-import com.assignment.koin1.viewmodels.GithubViewModel
 import com.assignment.koin1.utils.Result
+import com.assignment.koin1.viewmodels.GithubViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val githubViewModel by lazy { ViewModelProviders.of(this).get(GithubViewModel::class.java) }
+// normal way
+// private val githubViewModel by lazy { ViewModelProviders.of(this).get(GithubViewModel::class.java) }
+
+    //using KOIN
+    private val githubViewModel by viewModel<GithubViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
